@@ -2,6 +2,19 @@
 
 QueuePilot is a responsive full-stack helpdesk application designed to help a small IT team work the most important ticket first. The central feature is a backend-driven Smart Queue that ranks tickets by SLA risk instead of relying on a manually assigned sort order.
 
+<img width="1897" height="897" alt="image" src="https://github.com/user-attachments/assets/7a5d8e31-f1bb-4aa5-bbcf-a3feba6e1161" />
+
+## Screenshots
+
+### Dashboard
+<img width="1876" height="892" alt="image" src="https://github.com/user-attachments/assets/241f24fc-eb6a-4283-b097-7fbe332583dc" />
+
+### Smart Queue
+<img width="1431" height="632" alt="image" src="https://github.com/user-attachments/assets/76868508-d776-49fb-b886-372d135c8059" />
+
+### Ticket Detail
+<img width="1590" height="901" alt="image" src="https://github.com/user-attachments/assets/56e75bcb-d911-44cf-84f4-8c18e56dbef3" />
+
 ## What It Includes
 
 - Persistent SQLite database with realistic seeded helpdesk tickets
@@ -98,7 +111,6 @@ The queue tests cover overdue dominance, priority ordering, deadline ordering, a
 - Ticket creation, reading, updates, assignment, resolution, search, filtering, and pagination are implemented. A delete endpoint is not currently included because the interface does not expose destructive ticket deletion.
 - Invalid ticket IDs return `404`, invalid status or priority values return `400`, and create requests validate required customer, issue, description, and priority fields.
 - The dashboard refreshes queue and SLA information every minute. The server recalculates overdue and due-soon state from the current time on every request.
-- The `screenshots/` directory is currently empty; screenshots can be captured from the running app at `http://localhost:5173`.
 
 ## Demo Flow
 
@@ -119,3 +131,7 @@ src/main.jsx    React dashboard, queue, filters, detail drawer, create form
 src/styles.css  Responsive visual system and mobile layouts
 data/           Local SQLite database created at runtime
 ```
+---
+
+When every ticket claims to be urgent,  
+only the ones that actually are rise to the top 🤍
