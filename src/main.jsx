@@ -29,7 +29,14 @@ function App() {
   useEffect(() => { load() }, [filters.search, filters.status, filters.priority, filters.assignee, filters.overdue, filters.dueSoon, filters.page])
   useEffect(() => { const timer = setInterval(load, 60000); return () => clearInterval(timer) }, [filters])
   const updateFilter = (key, value) => setFilters(current => ({ ...current, [key]: value, page: key === 'page' ? value : 1 }))
-  const shortcut = (key, value) => setFilters(current => ({ ...current, status: 'all', overdue: false, dueSoon: false, assignee: 'all', [key]: value, page: 1 }))
+  const shortcut = (key, value) => setFilters(current => ({
+    ...current,
+    status: key === 'status' ? value : 'all',
+    overdue: key === 'overdue' ? value : false,
+    dueSoon: key === 'dueSoon' ? value : false,
+    assignee: key === 'assignee' ? value : 'all',
+    page: 1
+  }))
   const saveTicket = async (id, changes) => { try { const response = await fetch(`${API}/tickets/${id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(changes) }); if (!response.ok) throw new Error((await response.json()).error); setToast('Ticket updated'); setSelected(null); await load() } catch (err) { setToast(err.message) } }
 
   return <div className="app-shell">
